@@ -1,33 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Datatable = () => {
-    const [datatableData, setDatatableData] = useState([]);
-    const [selectedRows, setSelectedRows] = useState([]);
 
-    useEffect(() => {
-        fetch('https://67f5764a913986b16fa4a74e.mockapi.io/datatable')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => setDatatableData(data))
-            .catch((error) => console.error('Error fetching API:', error));
-    }, []);
-
-    // Xử lý chọn/bỏ chọn tất cả
+const Datatable = ({ data, selectedRows, setSelectedRows }) => {
+    // Sự kiện chọn/bỏ chọn tất cả các dòng
     const handleSelectAll = (e) => {
         if (e.target.checked) {
-            // Chọn tất cả, lưu lại index của từng dòng
-            const allRowIds = datatableData.map((_, index) => index);
-            setSelectedRows(allRowIds);
+            const allRowIndices = data.map((_, index) => index);
+            setSelectedRows(allRowIndices);
         } else {
             setSelectedRows([]);
         }
     };
 
-    // Xử lý chọn 1 dòng
+    // Sự kiện chọn từng dòng
     const handleSelectRow = (index) => {
         if (selectedRows.includes(index)) {
             setSelectedRows(selectedRows.filter((i) => i !== index));
@@ -46,7 +31,7 @@ const Datatable = () => {
                                 type="checkbox"
                                 className="datatable-checkbox"
                                 onChange={handleSelectAll}
-                                checked={datatableData.length > 0 && selectedRows.length === datatableData.length}
+                                checked={data.length > 0 && selectedRows.length === data.length}
                             />
                         </th>
                         <th className="datatable-th">Customer Name</th>
@@ -58,7 +43,7 @@ const Datatable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {datatableData.map((row, idx) => (
+                    {data.map((row, idx) => (
                         <tr key={idx} className="datatable-tr">
                             <td className="datatable-td text-center">
                                 <input
@@ -76,7 +61,9 @@ const Datatable = () => {
                             </td>
                             <td className="datatable-td">{row.company}</td>
                             <td className="datatable-td">${row.order_value}</td>
-                            <td className="datatable-td">{new Date(row.order_date).toLocaleDateString('en-GB')}</td>
+                            <td className="datatable-td">
+                                {new Date(row.order_date).toLocaleDateString('en-GB')}
+                            </td>
                             <td className="datatable-td">
                                 <span className={`status ${row.status.toLowerCase().replace(' ', '-')}`}>
                                     {row.status}
