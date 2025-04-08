@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Sidebar = () => {
     return (
         <div className="sidebar p-4 border-r-2">
@@ -7,31 +9,44 @@ const Sidebar = () => {
 
 
             <ul className="text-gray-700 font-medium space-y-2 h-[45%] w-full">
-                <li className="flex items-center gap-3 px-4 py-2 rounded-md ">
-                    <img src="Squares four 1.png" alt="Dashboard" className="w-5 h-5" />
-                    <span>Dashboard</span>
+                <li>
+                    <Link to="/" className="flex items-center gap-3 px-4 py-2 rounded-md">
+                        <img src="Squares four 1.png" alt="Dashboard" className="w-5 h-5" />
+                        <span>Dashboard</span>
+                    </Link>
                 </li>
-                <li className="flex items-center gap-3 px-4 py-2 rounded-md">
-                    <img src="Folder.png" alt="Projects" className="w-5 h-5" />
-                    <span>Projects</span>
+                <li>
+                    <Link to="/projects" className="flex items-center gap-3 px-4 py-2 rounded-md">
+                        <img src="Folder.png" alt="Projects" className="w-5 h-5" />
+                        <span>Projects</span>
+                    </Link>
                 </li>
-                <li className="flex items-center gap-3 px-4 py-2 rounded-md ">
-                    <img src="Groups.png" alt="Teams" className="w-5 h-5" />
-                    <span>Teams</span>
+                <li>
+                    <Link to="/teams" className="flex items-center gap-3 px-4 py-2 rounded-md">
+                        <img src="Groups.png" alt="Teams" className="w-5 h-5" />
+                        <span>Teams</span>
+                    </Link>
                 </li>
-                <li className="flex items-center gap-3 px-4 py-2 rounded-md ">
-                    <img src="Pie chart.png" alt="Analytics" className="w-5 h-5" />
-                    <span>Analytics</span>
+                <li>
+                    <Link to="/analytics" className="flex items-center gap-3 px-4 py-2 rounded-md">
+                        <img src="Pie chart.png" alt="Analytics" className="w-5 h-5" />
+                        <span>Analytics</span>
+                    </Link>
                 </li>
-                <li className="flex items-center gap-3 px-4 py-2 rounded-md ">
-                    <img src="Chat.png" alt="Messages" className="w-5 h-5" />
-                    <span>Messages</span>
+                <li>
+                    <Link to="/messages" className="flex items-center gap-3 px-4 py-2 rounded-md">
+                        <img src="Chat.png" alt="Messages" className="w-5 h-5" />
+                        <span>Messages</span>
+                    </Link>
                 </li>
-                <li className="flex items-center gap-3 px-4 py-2 rounded-md ">
-                    <img src="Code.png" alt="Integrations" className="w-5 h-5" />
-                    <span>Integrations</span>
+                <li>
+                    <Link to="/integrations" className="flex items-center gap-3 px-4 py-2 rounded-md">
+                        <img src="Code.png" alt="Integrations" className="w-5 h-5" />
+                        <span>Integrations</span>
+                    </Link>
                 </li>
             </ul>
+
             <div className="flex h-[40%] w-full justify-center items-center p-6">
                 <div className="bg-blue-50 rounded-2xl w-[80%] p-6">
                     <div className="flex justify-center items-center mb-4">
