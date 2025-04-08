@@ -1,7 +1,7 @@
 import './App.css'
+import './Datatable.css'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
-import Content from './components/Content'
 
 import { Routes, Route } from 'react-router-dom'
 

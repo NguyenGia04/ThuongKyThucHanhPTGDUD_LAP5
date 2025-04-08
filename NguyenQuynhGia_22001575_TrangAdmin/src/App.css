@@ -32,13 +32,6 @@
     background-color: #f67abe;
 }
 
-
-/* 
-.content {
-    border: 1px solid rgb(162, 161, 161);
-    grid-column: 2;
-} */
-
 .header {
     grid-column: 2 / 3;
     height: 80px;
